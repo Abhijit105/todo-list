@@ -20,7 +20,7 @@ const login = async function () {
   try {
     // Using the current URL as success/failure URL
     // const currentURL = 'https://idx.google.com/todo-list-3315522';
-    const currentURL = 'https://9000-idx-todo-list-1736528649500.cluster-fu5knmr55rd44vy7k7pxk74ams.cloudworkstations.dev'
+    const currentURL = 'https://todo-list-dqwf.onrender.com/'
     const session = await account.createOAuth2Session(
       'google',
       currentURL,  // success URL
