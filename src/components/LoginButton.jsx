@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { account, getSession, login, logout } from '../appwrite/appwrite';
+import { getSession, login, logout } from '../appwrite/appwrite';
 import GoogleButton from 'react-google-button';
 import { useSession } from '../store/store';
 

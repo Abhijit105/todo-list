@@ -36,6 +36,9 @@ function Todo({ todo }) {
     }
 
     const onUpdateTodo = async () => {
+        if(!todoText.trim())    {
+            return
+        }
         updateTodo(todo.$id, {todo: todoText})
         await updateDocument(todo.$id, {todo: todoText})
         setTodoText('')

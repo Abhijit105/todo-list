@@ -24,6 +24,9 @@ function InputContainer() {
             showSnackbar()
             return
         }
+        if(!todoText.trim())    {
+            return
+        }
         const newTodo = {
             todo: newTodoText,
             completed: false,

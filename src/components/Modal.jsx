@@ -1,7 +1,7 @@
 import Container from "../common/Container"
 import Heading from "../common/Heading"
 import Overlay from "../common/Overlay"
-import LoginButton from "../common/LoginButton"
+import LoginButton from "./LoginButton"
 import { useSession } from "../store/store"
 
 function Modal({onClose}) {
