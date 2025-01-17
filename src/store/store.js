@@ -6,7 +6,7 @@ export const useTodo = create((set) => ({
     addTodo: (newTodo) => set((state) => ({ todos: [...state.todos, newTodo] })),
     removeTodo: (selectedDocumentId) => set((state) => ({ todos: state.todos.filter((todo) => todo.$id !== selectedDocumentId) })),
     toggleTodo: (selectedDocumentId) => set((state) => ({ todos: state.todos.map((todo) => todo.$id === selectedDocumentId ? { ...todo, completed: !todo.completed } : todo) })),
-    updateTodo: (selectedDocumentId, updateTodo) => set((state) => ({todos: state.todos.map((todo) => todo.$id === selectedDocumentId ? {...todo, ...updateTodo} : todo)}))
+    updateTodo: (selectedDocumentId, updatedTodo) => set((state) => ({todos: state.todos.map((todo) => todo.$id === selectedDocumentId ? {...todo, ...updatedTodo} : todo)}))
 }))
 
 export const useSnackbar = create((set) => ({

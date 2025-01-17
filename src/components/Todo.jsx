@@ -30,9 +30,9 @@ function Todo({ todo }) {
         setTodoText(todo.todo)
     }
 
-    const onToggleTodo = async function(selectedTodoId)    {
-        toggleTodo(selectedTodoId)
-        await updateDocument(selectedTodoId, {completed: !todo.completed})
+    const onToggleTodo = async function()    {
+        toggleTodo(todo.$id)
+        await updateDocument(todo.$id, {completed: !todo.completed})
     }
 
     const onUpdateTodo = async () => {
@@ -42,9 +42,9 @@ function Todo({ todo }) {
         setIsEditing(false)
     }
     
-    const onDeleteTodo = async function (selectedTodoId) {
-        removeTodo(selectedTodoId)
-        await deleteDocument(selectedTodoId)
+    const onDeleteTodo = async function () {
+        removeTodo(todo.$id)
+        await deleteDocument(todo.$id)
     }
 
     return isEditing ? 
@@ -57,10 +57,10 @@ function Todo({ todo }) {
     ) :
     (
         <Container cx={'todo-container'}>
-            <Checkbox cx={'todo-checkbox'} value={todo.completed} onChange={() => onToggleTodo(todo.$id)} checked={todo.completed} />
+            <Checkbox cx={'todo-checkbox'} value={todo.completed} onChange={onToggleTodo} checked={todo.completed} />
             <Text cx={`todo-text ${todo.completed ? 'checked' : ''}`} title={todo.todo} />
             <ButtonsGroup buttons={[(<Button cx={'button'} title={'Edit'} onClick={edit} key={0} />),
-            (<Button cx={'button'} title={'Delete'} onClick={() => onDeleteTodo(todo.$id)} key={1} />)]} />
+            (<Button cx={'button'} title={'Delete'} onClick={onDeleteTodo} key={1} />)]} />
         </Container>
     )
 }

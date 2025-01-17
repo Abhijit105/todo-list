@@ -3,7 +3,7 @@ import List from "../common/List";
 import Todo from "./Todo";
 import { useSession, useTodo } from "../store/store";
 import ListItem from "../common/ListItem";
-import { databases, getDocuments,  } from "../appwrite/appwrite";
+import { getDocuments } from "../appwrite/appwrite";
 import { useEffect } from "react";
 
 function Todos() {
