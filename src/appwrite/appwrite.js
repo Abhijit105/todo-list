@@ -1,4 +1,4 @@
-import { Account, Client, Databases, ID, OAuthProvider } from "appwrite";
+import { Account, Client, Databases, ID, OAuthProvider, Query } from "appwrite";
 
 const client = new Client();
 client
@@ -45,11 +45,13 @@ const logout = async () => {
   }
 };
 
-const getDocuments = async() => {
+const getDocuments = async(userId) => {
   const data = await databases.listDocuments(
       import.meta.env.VITE_DATABASE_ID,
       import.meta.env.VITE_COLLECTION_ID,
-      []
+      [
+        Query.equal('userId', userId)
+      ]
   )
   return data
 }

@@ -12,8 +12,8 @@ function Todos() {
     const setTodos = useTodo(state => state.setTodos)
 
     const init = async () => {
-        const fetchedTodos = await getDocuments()
-        setTodos(fetchedTodos.documents.filter(document => document.userId === session.$id))
+        const fetchedTodos = await getDocuments(session.$id)
+        setTodos(fetchedTodos.documents)
     }
 
     useEffect(() => {

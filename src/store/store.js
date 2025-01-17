@@ -9,12 +9,6 @@ export const useTodo = create((set) => ({
     updateTodo: (selectedDocumentId, updatedTodo) => set((state) => ({todos: state.todos.map((todo) => todo.$id === selectedDocumentId ? {...todo, ...updatedTodo} : todo)}))
 }))
 
-export const useSnackbar = create((set) => ({
-    isShowSnackbar: false,
-    showSnackbar: () => set({ isShowSnackbar: true }),
-    hideSnackbar: () => set({ isShowSnackbar: false })
-}))
-
 export const useSession = create((set) => ({
     session: null,
     setSession: (newSession) => set({ session: newSession }),

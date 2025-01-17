@@ -4,23 +4,27 @@ import Heading from './common/Heading'
 import InputContainer from './components/InputContainer'
 import Modal from './components/Modal'
 import Todos from './components/Todos'
-import { useSession, useSnackbar } from './store/store'
+import { useSession } from './store/store'
 import Snackbar from './components/Snackbar'
 
 function App() {
   const [showModal, setShowModal] = useState(true)
+  const [showSnackbar, setShowSnackbar] = useState(false)
 
   const isLoggedIn = useSession(state => state.isLoggedIn)
-  const showSnackbar = useSnackbar(state => state.showSnackbar)
 
   const closeModal = function() {
     setShowModal(false)
   }
 
+  const closeSnackbar = function()  {
+    setShowSnackbar(false)
+  }
+
   useEffect(() => {
     if(!isLoggedIn)  return
     setShowModal(false)
-    showSnackbar()
+    setShowSnackbar(true)
   }, [isLoggedIn])
 
   return (
@@ -29,7 +33,7 @@ function App() {
       <InputContainer />
       <Todos />
       {showModal && <Modal onClose={closeModal} />}
-      <Snackbar title={'Logged In'}/>
+      {showSnackbar && <Snackbar title={'Logged In'} onClose={closeSnackbar}/>}
     </Container>
   )
 }
